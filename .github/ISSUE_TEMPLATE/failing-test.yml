@@ -21,19 +21,19 @@ body:
       label: Test Name
       description: Which test(s) are failing
       placeholder: testSomeTestName
-      validations:
-        required: true
+    validations:
+      required: true
   - type: textarea
     id: help
     attributes:
       label: Try to describe why the test is failing or what we are missing to make it pass
       description: How can we make this pass?
       placeholder: Test is expecting a string but null is being returned
-      validations:
-        required: true
+    validations:
+      required: true
   - type: textarea
     id: additional-info
     attributes:
       label: Is there anything else you can provide that can help?
-      validations:
-        required: false
+    validations:
+      required: false
