@@ -2,7 +2,9 @@
 
 namespace Larapress\Honeypot\Tests\Unit;
 
+use Larapress\Honeypot\Facades\Honeypot;
 use Larapress\Honeypot\Providers\HoneypotServiceProvider;
+use Larapress\Honeypot\Tests\Helpers\TestRequest;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class BasicConfigurationTest extends Orchestra
@@ -19,13 +21,28 @@ class BasicConfigurationTest extends Orchestra
         ];
     }
 
-    public function test_that_config_contains_array()
+    public function testThatConfigContainsArray()
     {
-        $this->assertIsArray(config('honeypot.fields'), "Fields are not an array");
+        Honeypot::updateFields('test1');
+        $this->assertIsArray(Honeypot::fields(), "Fields are not an array");
     }
 
-    public function test_that_config_fields_contain_values(): void
+    public function testThatConfigFieldsContainValues(): void
     {
-        $this->assertGreaterThanOrEqual(1, config('honeypot.fields'));
+        $this->assertGreaterThanOrEqual(1, Honeypot::fields());
+    }
+
+    public function testSetRedirect()
+    {
+        $to = '/someRandomEndpoint';
+        Honeypot::setRedirectTo($to);
+        $this->assertEquals($to, Honeypot::redirectTo());
+    }
+
+    public function testCanSetRequest()
+    {
+        $newRequest = new TestRequest();
+        Honeypot::setRequest($newRequest);
+        $this->assertInstanceOf(\Illuminate\Http\Request::class, Honeypot::request());
     }
 }

@@ -13,4 +13,5 @@ return [
 */
     'fields' => ['organization', 'ohboy', 'got_it', 'good'],
     'disable_auto_complete' => true,
+    'redirectTo' => '/'
 ];

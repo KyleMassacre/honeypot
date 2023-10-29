@@ -47,6 +47,12 @@ jobs:
       - name: List Installed Dependencies
         run: composer show -D
 
+      - name: Run PHP Fixer
+        run: vendor/bin/php-cs-fixer fix --allow-risky=yes
+
+      - name: Run PHP Analyser
+        run: vendor/bin/phpstan
+
       - name: Execute tests
         run: vendor/bin/phpunit
 
