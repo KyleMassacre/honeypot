@@ -1,9 +1,12 @@
 name: "💉 Failing Test"
-about: "Report failing tests or CI jobs."
-title: "[Test] "
+description: "Report failing tests or CI jobs."
+title: "[Test]: "
 labels: ["test"]
-
 body:
+  - type: markdown
+    attributes:
+      value: |
+        We're sorry to hear you have a problem. Can you help us solve it by providing the following details.
   - type: textarea
     id: job-test
     attributes:
