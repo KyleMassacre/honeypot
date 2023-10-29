@@ -1,0 +1,37 @@
+---
+name: "💉 Failing Test"
+about: "Report failing tests or CI jobs."
+title: "[Test] "
+labels: ["test"]
+
+body:
+  - type: textarea
+    id: job-test
+    attributes:
+      label: Which job(s) are failing?
+      description: "[Job Name] / [Step Name]. One on each line"
+      placeholder: P8.2 - L10.* prefer - lowest - ubuntu-latest / Execute Tests
+    validations:
+      required: true
+  - type: input
+    id: test-name
+    attributes:
+      label: Test Name
+      description: Which test(s) are failing
+      placeholder: testSomeTestName
+      validations:
+        required: true
+  - type: textarea
+    id: help
+    attributes:
+      label: Try to describe why the test is failing or what we are missing to make it pass
+      description: How can we make this pass?
+      placeholder: Test is expecting a string but null is being returned
+      validations:
+        required: true
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: Is there anything else you can provide that can help?
+      validations:
+        required: false
